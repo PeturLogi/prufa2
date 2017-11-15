@@ -29,10 +29,10 @@ public class BanquetRepositoryImp implements BanquetRepository {
 	
 	// Attributes for SQL Connection
 	Connection con;
-	private final String url = "jdbc:postgresql://localhost:5432/bookingdb";
+	private final String url = "jdbc:postgresql://ec2-54-247-124-9.eu-west-1.compute.amazonaws.com:5432/defmqqmc8ri7to?user=gijczsvgxuzort&password=75fe2e36d3c5d36814293d7152e26c8150ff5b007a751a1716c03a4cee57ce62&sslmode=require";
 	private final String driver = "org.postgresql.Driver";
-	private final String userName = "postgres";
-	private final String password = "123456";	
+	private final String userName = "gijczsvgxuzort";
+	private final String password = "75fe2e36d3c5d36814293d7152e26c8150ff5b007a751a1716c03a4cee57ce62";	
 	
 	// Connection to Database
 	public Connection connect() {
