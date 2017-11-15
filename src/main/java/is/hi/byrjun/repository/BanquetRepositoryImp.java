@@ -3,10 +3,13 @@ package is.hi.byrjun.repository;
 import is.hi.byrjun.model.Banquet;
 import is.hi.byrjun.model.BanquetBookings;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Repository;
@@ -26,28 +29,17 @@ public class BanquetRepositoryImp implements BanquetRepository {
 	
 	//Listi af veislusölum
 	private List<Banquet> banquets;
-	
-	// Attributes for SQL Connection
-	Connection con;
-	private final String url = "jdbc:postgresql://ec2-54-247-124-9.eu-west-1.compute.amazonaws.com:5432/defmqqmc8ri7to?user=gijczsvgxuzort&password=75fe2e36d3c5d36814293d7152e26c8150ff5b007a751a1716c03a4cee57ce62&sslmode=require";
-	private final String driver = "org.postgresql.Driver";
-	private final String userName = "gijczsvgxuzort";
-	private final String password = "75fe2e36d3c5d36814293d7152e26c8150ff5b007a751a1716c03a4cee57ce62";	
-	
-	// Connection to Database
-	public Connection connect() {
-		try {
-			Class.forName(driver);
-			con = DriverManager.getConnection(url, userName, password);
-			if (con == null) {
-				System.out.println("Connection cannot be established");
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return con;
+
+	// Connection to Heroku database
+	private static Connection getConnection() throws URISyntaxException, SQLException {
+	    URI dbUri = new URI(System.getenv("DATABASE_URL"));
+
+	    String username = dbUri.getUserInfo().split(":")[0];
+	    String password = dbUri.getUserInfo().split(":")[1];
+	    String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
+
+	    return DriverManager.getConnection(dbUrl, username, password);
 	}
-	
 	
 	public BanquetRepositoryImp() {
 		banquets = new ArrayList<Banquet>();
@@ -57,7 +49,7 @@ public class BanquetRepositoryImp implements BanquetRepository {
 	public List<Banquet> getAll() {
 		ArrayList<Banquet> list = new ArrayList<Banquet>();
 		try {
-			Connection con = DriverManager.getConnection(url, userName, password);
+			Connection con = getConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT * FROM banquets");
 			ResultSet rs = ps.executeQuery();
 			
@@ -85,7 +77,7 @@ public class BanquetRepositoryImp implements BanquetRepository {
 	@Override
 	public void addNewBanquetBooking(BanquetBookings booking) {
 		try {
-			Connection con = DriverManager.getConnection(url, userName, password);
+			Connection con = getConnection();
 			PreparedStatement ps = con.prepareStatement("INSERT INTO banquetbookings ("
 					+ "name, kennitala, email, phonenr, banquetnumber, dagsetning) VALUES ("
 					+ "?,?,?,?,?,?)");
@@ -110,7 +102,7 @@ public class BanquetRepositoryImp implements BanquetRepository {
 			int maxppl, int phoneNr, String email, String key, String description) {
 		int result = -1;
 		try {
-			Connection con = DriverManager.getConnection(url, userName, password);
+			Connection con = getConnection();
 			PreparedStatement ps = con.prepareStatement("INSERT INTO banquets ("
 					+ "name, location, street, price, maxppl, phonenr, email, key, description) VALUES ("
 					+ "?,?,?,?,?,?,?,?,?)");
@@ -150,7 +142,7 @@ public class BanquetRepositoryImp implements BanquetRepository {
 	@Override
 	public Banquet verifyBanquet(int id, String key) {
 		try {
-			Connection con = DriverManager.getConnection(url, userName, password);
+			Connection con = getConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT * FROM banquets");
 			ResultSet rs = ps.executeQuery();
 			
@@ -177,7 +169,7 @@ public class BanquetRepositoryImp implements BanquetRepository {
 	@Override
 	public void removeBanquet(int id) {
 		try {
-			Connection con = DriverManager.getConnection(url, userName, password);
+			Connection con = getConnection();
 			PreparedStatement ps = con.prepareStatement("DELETE FROM banquets WHERE banquetnumber = " + id);
 			ps.execute();
 			ps.close();
@@ -191,7 +183,7 @@ public class BanquetRepositoryImp implements BanquetRepository {
 	@Override
 	public void changeBanquet(Banquet updated) {
 		try {
-			Connection con = DriverManager.getConnection(url, userName, password);
+			Connection con = getConnection();
 			PreparedStatement ps = con.prepareStatement("UPDATE banquets SET name = ?,"
 					+ "location = ?, street = ?, price = ?, maxppl = ?, phonenr = ?,"
 					+ "email = ?," + "description = ? WHERE banquetnumber = ?");
@@ -216,7 +208,7 @@ public class BanquetRepositoryImp implements BanquetRepository {
 
 	public List<String> findBookedDates(Banquet salur) {
 		try {
-			Connection con = DriverManager.getConnection(url, userName, password);
+			Connection con = getConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT * FROM banquetbookings WHERE banquetnumber = ? AND dagsetning IS NOT NULL");
 			ps.setInt(1, salur.getId());
 			ResultSet rs = ps.executeQuery();
@@ -233,10 +225,3 @@ public class BanquetRepositoryImp implements BanquetRepository {
 		return null;
 	}
 }
-
-
-
-
-
-
-

@@ -3,10 +3,13 @@ package is.hi.byrjun.repository;
 import is.hi.byrjun.model.SportVenues;
 import is.hi.byrjun.model.SportVenuesBookings;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Repository;
@@ -27,26 +30,15 @@ public class SportVenuesRepositoryImp implements SportVenuesRepository{
 	//Listi af íþróttasölum
 	private List<SportVenues> sportvenues;
 	
-	// Attributes for SQL Connection
-	Connection con;
-	private final String url = "jdbc:postgresql://ec2-54-247-124-9.eu-west-1.compute.amazonaws.com:5432/defmqqmc8ri7to?user=gijczsvgxuzort&password=75fe2e36d3c5d36814293d7152e26c8150ff5b007a751a1716c03a4cee57ce62&sslmode=require";
-	private final String driver = "org.postgresql.Driver";
-	private final String userName = "gijczsvgxuzort";
-	private final String password = "75fe2e36d3c5d36814293d7152e26c8150ff5b007a751a1716c03a4cee57ce62";
+	// Connection to Heroku database
+	private static Connection getConnection() throws URISyntaxException, SQLException {
+	    URI dbUri = new URI(System.getenv("DATABASE_URL"));
 
-	
-	// Connection to Database
-	public Connection connect() {
-		try {
-			Class.forName(driver);
-			con = DriverManager.getConnection(url, userName, password);
-			if (con == null) {
-				System.out.println("Connection cannot be established");
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return con;
+	    String username = dbUri.getUserInfo().split(":")[0];
+	    String password = dbUri.getUserInfo().split(":")[1];
+	    String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
+
+	    return DriverManager.getConnection(dbUrl, username, password);
 	}
 	
 	public SportVenuesRepositoryImp() {
@@ -57,7 +49,7 @@ public class SportVenuesRepositoryImp implements SportVenuesRepository{
 	public List<SportVenues> getAll() {
 		ArrayList<SportVenues> list = new ArrayList<SportVenues>();
 		try {
-			Connection con = DriverManager.getConnection(url, userName, password);
+			Connection con = getConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT * FROM  sportvenues");
 			ResultSet rs = ps.executeQuery();
 			
@@ -83,7 +75,7 @@ public class SportVenuesRepositoryImp implements SportVenuesRepository{
 	// Add a sportvenue booking to the sportvenuebookings table in database
 	public void addNewSportVenueBooking(SportVenuesBookings booking) {
 		try {
-			Connection con = DriverManager.getConnection(url, userName, password);
+			Connection con = getConnection();
 			PreparedStatement ps = con.prepareStatement("INSERT INTO sportvenuebookings ("
 					+ "name, kennitala, email, phonenr, sportvenuenumber, dagsetning) VALUES ("
 					+ "?,?,?,?,?,?)");
@@ -108,7 +100,7 @@ public class SportVenuesRepositoryImp implements SportVenuesRepository{
 			String email, String key, String description) {
 		int result = -1;
 		try {
-			Connection con = DriverManager.getConnection(url, userName, password);
+			Connection con = getConnection();
 			PreparedStatement ps = con.prepareStatement("INSERT INTO sportvenues ("
 					+ "name, location, street, price, phonenr, email, key, description) VALUES ("
 					+ "?,?,?,?,?,?,?,?)");
@@ -148,7 +140,7 @@ public class SportVenuesRepositoryImp implements SportVenuesRepository{
 	@Override
 	public SportVenues verifySport(int id, String key) {
 		try {
-			Connection con = DriverManager.getConnection(url, userName, password);
+			Connection con = getConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT * FROM sportvenues");
 			ResultSet rs = ps.executeQuery();
 			
@@ -175,7 +167,7 @@ public class SportVenuesRepositoryImp implements SportVenuesRepository{
 	@Override
 	public void removeSport(int id) {
 		try {
-			Connection con = DriverManager.getConnection(url, userName, password);
+			Connection con = getConnection();
 			PreparedStatement ps = con.prepareStatement("DELETE FROM sportvenues WHERE sportvenuenumber = " + id);
 			ps.execute();
 			ps.close();
@@ -187,7 +179,7 @@ public class SportVenuesRepositoryImp implements SportVenuesRepository{
 	// Update Sportvenues in database
 	public void changeSport(SportVenues updated) {
 		try {
-			Connection con = DriverManager.getConnection(url, userName, password);
+			Connection con = getConnection();
 			PreparedStatement ps = con.prepareStatement("UPDATE sportvenues SET name = ?,"
 					+ "location = ?, street = ?, price = ?, phonenr = ?,"
 					+ "email = ?, " + "description = ? WHERE sportvenuenumber = ?");
@@ -211,7 +203,7 @@ public class SportVenuesRepositoryImp implements SportVenuesRepository{
 	
 	public List<String> checkAvalible(SportVenues sport) {
 		try {
-			Connection con = DriverManager.getConnection(url, userName, password);
+			Connection con = getConnection();
 			PreparedStatement ps = con.prepareStatement("SELECT * FROM sportvenuebookings WHERE sportvenuenumber = ? AND dagsetning IS NOT NULL");
 			ps.setInt(1, sport.getId());
 			ResultSet rs = ps.executeQuery();
@@ -228,12 +220,3 @@ public class SportVenuesRepositoryImp implements SportVenuesRepository{
 		return null;
 	}
 }
-
-
-
-
-
-
-
-
-
