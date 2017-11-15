@@ -1,0 +1,722 @@
+/* Höfundur: Vilhjálmur Jónsson */
+/* email: vij7@hi.is */
+/*allt css í Salir.com verkefninu*/
+
+body {
+	margin: 0;
+    padding: 0;
+}
+
+header {
+	padding: 0 5%
+	display: block;
+}
+
+section {
+	margin-bottom: 0;
+
+}
+
+footer {
+	padding: 0 0;
+
+}
+
+/*haus svæði*/
+
+.headerSection {
+
+
+}
+
+.header1 {
+	padding: 0% 5%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap:wrap;
+}
+
+.loginToAdmin {
+	left: 75%;
+	position: relative;
+	font-weight: bold;
+
+
+}
+
+/*main*/
+
+.salirIMG {
+	position:relative;
+	top: 20px;
+	left: 37%;
+	width: 357px;
+}
+
+
+
+option:first {
+	color: #999;
+
+}
+
+.searchSection {
+	padding: 5% 0%;
+}
+
+.leitButton {
+	padding: 4%;
+    margin: 0;
+    border: 2px solid #000;
+    width: 70px;
+    border-radius: 3px;
+    overflow: hidden;
+ 	font-weight:bold;
+    background: #fff;
+    position: relative;
+    background-color: #982149;
+}
+
+.skraButton {
+	padding: 4%;
+    margin: 0;
+    border: 2px solid #000;
+    width: 70px;
+    border-radius: 3px;
+    overflow: hidden;
+ 	font-weight:bold;
+    background: #fff;
+    position: relative;
+    background-color: #982149;
+}
+
+.bokaButton {
+	padding: 4%;
+    margin: 0;
+    border: 2px solid #000;
+    width: 70px;
+    border-radius: 3px;
+    overflow: hidden;
+ 	font-weight:bold;
+    background: #fff;
+    position: relative;
+    background-color: #982149;
+}
+
+.nytt1{
+
+
+}
+
+/*Taflan þegar maður leitaf af sölum*/
+.locationID{
+    padding: 0;
+    margin: 0;
+    border: 2px solid #000;
+    width: 120px;
+    border-radius: 3px;
+    overflow: hidden;
+
+    background: #fff;
+    position: relative;
+
+}
+
+.locationID:after {
+    top: 50%;
+    left: 85%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(0, 0, 0, 0);
+    border-top-color: #000000;
+    border-width: 5px;
+    margin-top: -2px;
+    z-index: 100;
+}
+
+.locationID select {
+    padding: 5px 8px;
+    width: 130%;
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+
+}
+
+.maxRoom{
+    padding: 0;
+    margin: 0;
+    border: 2px solid #000;
+    width: 120px;
+    border-radius: 3px;
+    overflow: hidden;
+
+    background: #fff;
+    position: relative;
+
+}
+
+.maxRoom:after {
+    top: 50%;
+    left: 85%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(0, 0, 0, 0);
+    border-top-color: #000000;
+    border-width: 5px;
+    margin-top: -2px;
+    z-index: 100;
+}
+
+.maxRoom select {
+    padding: 5px 8px;
+    width: 130%;
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+
+}
+
+
+
+
+.tegundSals{
+    padding: 0;
+    margin: 0;
+    border: 2px solid #000;
+    width: 120px;
+    border-radius: 3px;
+    overflow: hidden;
+
+    background: #fff;
+    position: relative;
+
+}
+
+.tegundSals:after {
+    top: 50%;
+    left: 85%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(0, 0, 0, 0);
+    border-top-color: #000000;
+    border-width: 5px;
+    margin-top: -2px;
+    z-index: 100;
+}
+
+.tegundSals select {
+    padding: 5px 8px;
+    width: 130%;
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+
+}
+
+.leitarTakki {
+
+
+}
+
+
+
+
+
+.veislusalir {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    background-color: #FFFFFF;
+}
+
+.veislusalir th {
+	border: 1px solid #ddd;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #000000;
+    color: white;
+}
+
+
+
+.veislusalir td {
+    border: 1px solid #ddd;
+    padding: 8px;
+
+}
+
+.veislusalir tr:nth-child(even){background-color: #f2f2f2;}
+
+.veislusalir tr:hover {background-color: #ddd;}
+
+
+
+
+.sportsalir {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    background-color: white;
+}
+
+.sportsalir td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.sportsalir tr:nth-child(even){background-color: #f2f2f2;}
+
+.sportsalir tr:hover {background-color: #ddd;}
+
+.sportsalir th {
+	border: 1px solid #ddd;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #000000;
+    color: white;
+}
+
+.infoSection {
+	background-color: black;
+}
+
+.infoInfo {
+	padding: 5% 5%;
+
+}
+
+.followUs {
+	font-size: 18px;
+	font-weight:bold;
+	text-align:center;
+
+}
+
+.facebook, .twitter {
+
+}
+
+/*Forms*/
+
+.LoL1 {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	position: absolute;
+	left: 64.1%;
+}
+
+.leitarTakkar {
+	display: flex;
+	flex-direction: row;
+	left: 31.5%;
+	align-items: center;
+	position: absolute;
+}
+
+.LoL {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	position: absolute;
+	left: 35%;
+	
+}
+
+.LoL2 {
+
+}
+
+.LoL3 {
+	
+}
+
+.LoL4 {
+	width:50%;
+	margin-left: 25%
+}
+
+.LoL5 {
+	
+}
+
+.salirTexti1 {
+	text-align: center;
+	font-size: 15px;
+}
+
+.bokunarTexti1 {
+	color: white;
+}
+
+/*lokaSida*/
+
+.infoInfoLokasida {
+	padding: 3% 5%;
+	
+}
+.PontunLokidTexti {
+	color: white;
+	text-align: center;
+	font-weight: bold;
+	font-size: 30px;
+}
+
+.TakkFyrirTexti {
+	color: white;
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+/*NewSalur*/
+
+label {
+	font-size:20px;
+	color: white;
+	font-weight:bold;
+}
+.infoInfoNyrSalur {
+    display: Flex;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 5%;
+    padding-top: 2%;
+}
+
+.fLuL {
+	border-radius: 5px;
+	padding: 20px;
+	background-color: red;
+}
+
+.selStadur select {
+	width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.salurTegund select {
+	width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.salurGata input{
+	width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+	
+}
+
+.salurNafn input{
+	width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+	
+}
+.salurFjoldi input{
+	width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+	
+}
+
+.salurVerd input{
+	width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+	
+}
+.salurSimi input{
+	width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+	
+}
+
+.salurNetfang input{
+	width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+	
+}
+
+.salurDescript input {
+	width: 100%;
+	height: 100px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+textarea input{
+     width: 100px;
+     height: 40px;
+     padding: 10px;
+     }
+              
+textarea input[type=text]{
+     border-radius: 10px;
+     -webkit-border-radius: 10px;
+     -moz-border-radius: 10px;
+     border: none;
+     }
+              
+textarea {
+     height: 100px;
+     width: 100%;
+     padding: 12px 20px;
+     margin: 8px 0;
+     display: inline-block;
+     border: 1px solid #ccc;
+     resize: none;
+     border-radius: 4px;
+     box-sizing: border-box;
+     }
+
+.salurLykill input{
+	width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+	
+}
+
+.stadfesta {
+	width: 100%;
+	background-color: #4CAF50;
+	color:white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.stadfesta2 {
+	width: 200px;
+	background-color: #4CAF50;
+	color:white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	margin:auto;
+    display:block;
+}
+
+.stadfesta2:hover{
+	background-color: #45a049
+}
+
+.stadfesta:hover{
+	background-color: #45a049
+}
+
+.innskra{
+	width: 100%;
+	background-color: #CCD1D1;
+	color:black;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.innskra:hover {
+    background-color: #B2BABB;
+    }
+
+.salurHausTexti {
+	color:white;
+	font-weight:bold;
+	font-size:30px;
+}
+
+/*SkraLokid*/
+
+.skraLokidInfo {
+	padding-top: 2%;
+	padding-bottom: 4%;
+}
+
+.skraningTokstTexti {
+	color:white;
+	text-align:center;
+	font-weight:bold;
+	font-size: 30px;
+}
+
+
+.idTexti {
+	color:#982149;
+	text-align:center;
+	font-weight: bold;
+	font-size: 25px;
+}
+
+.villuTexti {
+	color: white;
+	text-align:center;
+	font-weight: bold;
+	font-size: 25px;
+}
+
+.takkFyrirTexti {
+	color:white;
+	text-align:center;
+	font-weight:bold;
+	font-size: 20px;
+}
+
+/*Bóka veislusali og sportsali*/
+
+.infoInfoBokasal {
+    padding-left: 30%;
+    padding-top: 2%;
+    padding-bottom: 5%;
+}
+.infosalurBox {
+    color: #982149;
+    font-weight: bold;
+    position: absolute;
+    left: 8%;
+    padding-top: 10%;
+
+}
+
+.infosalurBox22 {
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    right: 4%;
+    padding-top: 11%;
+    width: 21em;
+    word-wrap: break-word;
+}
+
+.infoBoxTexti22 {
+	font-size: 20px;
+	line-height: 25px;
+}
+
+.salurBokBok {
+	font-size:25px;
+}
+
+.infoBoxTexti {
+	font-size:20px;
+}
+
+.boxBox {
+	display:flex;
+}
+
+.LoL6 {
+	width:57%;
+}
+
+.salurHausTexti1 {
+	color:white;
+	font-weight:bold;
+	font-size:30px;
+}
+
+
+/*Bóka Íþróttasal*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

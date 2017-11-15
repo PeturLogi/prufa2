@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: ByrjunSpring-enginnGG
+Implementation-Version: 0.1
+Built-By: Alienware
+Implementation-Vendor-Id: HBV501G
+Build-Jdk: 1.8.0_151
+Implementation-URL: http://projects.spring.io/spring-boot/ByrjunSpring
+ -enginnGG/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+
